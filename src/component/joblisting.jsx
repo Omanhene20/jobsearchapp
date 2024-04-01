@@ -1,19 +1,23 @@
 import React,{ useEffect, useState }  from "react";
 import Jobcard from './jobcard.jsx';
 import axios from 'axios';
-const Joblisting= () => {
+import Loading from "./loading.jsx";
+
+const Joblisting= ({query, loading, onLoading}) => {
 
     const [jobs, setJobs] = useState({jobs:[]});
 
     useEffect(() => {
-        axios.get(`https://remotive.com/api/remote-jobs?search=front`)
-        .then(response =>
+        axios.get(`https://remotive.com/api/remote-jobs?search=${query}`)
+        .then(response =>{
          setJobs(response.data)
+         onLoading(false)
+        }
         )
         .catch(err => console.log(err));
-    }, []);
+    }, [query]);
 
-   let content = jobs.jobs.map((job, index) => (
+   let content = loading ? <Loading/> : jobs.jobs.map((job, index) => (
         <Jobcard key={index} {...job} />
       ))
 

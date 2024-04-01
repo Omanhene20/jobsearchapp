@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import Footer from './Footer.jsx';
 import Logo from './logo.jsx';
 import Joblisting from './joblisting.jsx';
@@ -6,14 +6,15 @@ import Logosearch from './logosearch.jsx';
  
 const Home =() => {
 
-    const[ searchWord, setSearchWord]= useState("");
+    const[ query, setQuery]= useState("");
+    const[ loading, setLoading]=useState("false")
     return(
       <>
       <Logo/>
       <div>
-      <Logosearch/>
+      <Logosearch onQuery={setQuery} onLoading={setLoading}/>
       </div>
-      <Joblisting searchWord={searchWord}/>
+      <Joblisting query={query} loading={loading} onLoading={setLoading}/>
    
       <Footer/>
       </>

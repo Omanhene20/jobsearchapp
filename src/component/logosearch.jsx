@@ -1,5 +1,13 @@
-import React from "react";
-const Logosearch = () => {
+import React,{ useState } from "react";
+const Logosearch = ({onQuery,onLoading}) => {
+    const[ keyword, setKeyword]= useState("");
+
+
+ function handleInput(){
+    onQuery(keyword);
+    onLoading(true)
+}
+
     return(
         <div>
     <div className="catagory_area" style={{"backgroundColor":"#001D38"}}>
@@ -7,12 +15,12 @@ const Logosearch = () => {
             <div className="row cat_search">
                 <div className="col-lg-9 col-md-9">
                     <div className="single_input">
-                        <input type="text" placeholder="Search keyword" />
+                        <input type="text" placeholder="Search keyword" onInput={(e)=>setKeyword(e.target.value)}/>
                     </div>
                 </div>
                 <div className="col-lg-3 col-md-12">
                     <div className="job_btn">
-                        <a href="#" className="boxed-btn3">Find Job</a>
+                        <a href="#" className="boxed-btn3" onClick={handleInput}>Find Job</a>
                     </div>
                 </div>
             </div>
