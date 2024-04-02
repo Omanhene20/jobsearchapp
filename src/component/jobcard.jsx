@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 const Jobcard = (job) => {
     return( 
             <div className="col-lg-12 col-md-12">
@@ -21,8 +22,7 @@ const Jobcard = (job) => {
                             </div>
                             <div className="jobs_right">
                                 <div className="apply_now">
-                                    <a className="heart_mark" href="#"> <i className="ti-heart"></i> </a>
-                                    <a href={job.url} target="_blank" className="boxed-btn3">Apply Now</a>
+                                    <Link className="boxed-btn3" to={'/jobdetails/' + job.id}> Apply Now </Link>
                                 </div>
                                 <div className="date">
                                     <p>{job.publication_date}</p>
