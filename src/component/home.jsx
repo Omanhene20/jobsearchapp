@@ -6,7 +6,7 @@ import Logosearch from './logosearch.jsx';
  
 const Home =() => {
 
-    const[ query, setQuery]= useState("");
+    const[ query, setQuery]= useState("frontend");
     const[ loading, setLoading]=useState("false")
     return(
       <>
