@@ -11,6 +11,8 @@ const Joblisting= ({query, loading, onLoading}) => {
         axios.get(`https://remotive.com/api/remote-jobs?search=${query}`)
         .then(response =>{
          setJobs(response.data)
+         localStorage.setItem("jobs", JSON.stringify(response.data));
+     //window.location.replace('https://jobsearchapp-dg53-a3e7bocx--5173--7dbe22a9.local-credentialless.webcontainer.io/jobdetails/1903977')
          onLoading(false)
         }
         )
